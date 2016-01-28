@@ -1,6 +1,6 @@
-# my-portfolio-website
-creating a portfolio website
+# ng-challenge
+challenge application created using node/angular
 
-you can see it live here:
-http://dragndesign.com/portfolio/
+working source code + directory structure is in the Public folder.
+
 
