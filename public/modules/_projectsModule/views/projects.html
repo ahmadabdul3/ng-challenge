@@ -1,0 +1,224 @@
+<div>
+	
+	<div class="projects-section">
+		<div class="link">
+			<a href="{{projectCtl.mainLink}}">{{projectCtl.mainLinkName}}</a>
+		</div>
+		<div class="projects-title">
+			<h3>Projects</h3>
+			<div class="add">
+				<label data-ng-click='projectCtl.showNewProjectForm()'>Add +</label>
+			</div>
+		</div>
+		<div class="projects-list">
+			<ul>
+				<li class="project-box" data-ng-repeat='project in projectCtl.projects | orderBy:"name":false'>
+					<div class="edit-delete-box">
+						<!--<label class="edit">
+							Edit
+						</label>-->
+						<!--<label class="delete" data-ng-click='projectCtl.deleteProject(project.id, project.name)'>
+							Delete
+						</label>-->
+						<div class='box' data-ng-click='projectCtl.deleteProject(project.id, project.name)'>
+							<div class='close-box'>
+								<div class='close-icon'>
+									x
+								</div><div class='vertical-mid-hack'></div>
+							</div>
+							<div class='circle'></div>
+						</div>
+					</div>
+					<header>
+						<div class="title-box">
+							<h4>
+								{{project.name}}
+							</h4>
+						</div>
+					</header>
+					<article>
+						<p>
+							Due: {{project.deadline().name}}
+						</p>
+						<p>
+							Dept: {{project.department().name}}
+						</p>
+						<p class='{{projectCtl.totalResourcesClass}}'>
+							Total Resources: {{project.resourceLength(project.id)}}
+						</p>
+						<ul class='{{projectCtl.resourceListClass}}'>
+							<li data-ng-repeat='resource in project.resources() | orderBy:"name":false'>
+								<p>
+									Resource: {{resource.name}}
+								</p>
+							</li>
+							<!--<li data-ng-repeat='resource in projectCtl.getProjectResources(project.refs.resources) | orderBy:"name":false'>
+								<p>
+									Resource: {{resource.name}}
+								</p>
+							</li>-->
+						</ul>
+					</article>
+				</li>
+			</ul>
+		</div>
+		<div class="link">
+			<a href='#/departments'>Departments</a>
+		</div>
+		<div class="link">
+			<a href='#/deadlines'>Deadlines</a>
+		</div>
+		<div class="link">
+			<a href='#/resources'>Resources</a>
+		</div>
+	</div>
+	
+	<div class="add-project-modal">
+		<div class="add-project-modal-background" data-ng-click='projectCtl.cancelAddNewProject()'></div>
+		<div class="project-add-box">
+			<header>
+				<div class="title-box">
+					<div>
+						<h3>
+							New Project
+						</h3>
+						<span class='required-asterisk'>*</span>
+						<span class='required-fields-message'><span>*</span> Required fields</span>
+					</div>
+					<input type='text' 
+					data-ng-model='projectCtl.newProject.name' 
+					data-ng-blur='projectCtl.validateNewProject(true)'
+					data-ng-trim='false'
+					data-ng-class='projectCtl.newProject.newProjectClass'
+					placeholder='Project Name'/>
+				</div>
+				<div class="error-message">
+					{{projectCtl.newProject.errorMessage}}
+				</div>
+			</header>
+			<article>
+				<section>
+					<div>
+						<p>
+							Deadline
+							<span class='required-asterisk'>*</span>
+						</p>
+					</div>
+					<div>
+						<label>Available: </label>
+						<select data-ng-model='projectCtl.newProject.deadlineId' data-ng-change='projectCtl.clearNewProjectDeadline()'>
+							<option value=''>
+								Select
+							</option>
+							<option data-ng-repeat='deadline in projectCtl.newProject.deadlineList | orderBy:"name":false' value='{{deadline.id}}'>
+								{{deadline.name}}
+							</option>
+						</select>
+					</div>
+					<div>
+						<label>New: </label>
+						<input type='text' 
+						data-ng-model='projectCtl.newProject.deadline' 
+						data-ng-blur='projectCtl.validateDeadline(true)' 
+						data-ng-change='projectCtl.clearNewProjectDeadlineId()'
+						data-ng-trim='false'
+						data-ng-class='projectCtl.newProject.deadlineClass'
+						placeholder='New Deadline'/>
+					</div>
+					<div class="error-message">{{projectCtl.newProject.deadlineErrorMessage}}</div>
+				</section>
+				<section>
+					<div>
+						<p>
+							Department
+							<span class='required-asterisk'>*</span>
+						</p>
+					</div>
+					<div>
+						<label>Available: </label>
+						<select data-ng-model='projectCtl.newProject.departmentId' data-ng-change='projectCtl.clearNewProjectDepartment()'>
+							<option value=''>
+								Select
+							</option>
+							<option data-ng-repeat='department in projectCtl.newProject.departmentList | orderBy:"name":false' value='{{department.id}}'>
+								{{department.name}}
+							</option>
+						</select>
+					</div>
+					<div>
+						<label>New: </label>
+						<input type='text' 
+						data-ng-model='projectCtl.newProject.department' 
+						data-ng-blur='projectCtl.validateDepartment(true)' 
+						data-ng-change='projectCtl.clearNewProjectDepartmentId()'
+						data-ng-trim='false'
+						data-ng-class='projectCtl.newProject.departmentClass'
+						placeholder='New Department'/>
+					</div>
+					<div class="error-message">{{projectCtl.newProject.departmentErrorMessage}}</div>
+				</section>
+				<section class="resource-section">
+					<div>
+						<p>
+							Resources
+						</p>
+					</div>
+					<div>
+						<label>Available: </label>
+						<!--<select data-ng-model='projectCtl.newProject.resourceId' data-ng-change='projectCtl.clearNewProjectResource()'>
+							<option value=''>
+								Select
+							</option>
+							<option data-ng-repeat='resource in projectCtl.newProject.resourceList | orderBy:"name":false' value='{{resource.id}}'>
+								{{resource.name}}
+							</option>
+						</select>-->
+						<select data-ng-model='projectCtl.newProject.selectedResource'
+						data-ng-options='resource as resource.name for resource in projectCtl.newProject.resourceList | orderBy:"name":false'>
+							<option value=''>
+								Select
+							</option>
+						</select>
+						<button data-ng-click='projectCtl.addResourceId()'>+</button>
+					</div>
+					<div>
+						<label>New: </label>
+						<input type='text' 
+						data-ng-model='projectCtl.newProject.resource' 
+						data-ng-blur='projectCtl.validateResource(true)'
+						data-ng-trim='false'
+						data-ng-class='projectCtl.newProject.resourceClass'
+						placeholder='New Resource'/>
+						<button data-ng-click='projectCtl.addResourceName()'>+</button>
+					</div>
+					<div class="selected-resource-list-div">
+						<ul>
+							<li data-ng-repeat='resource in projectCtl.newProject.tempResourceIdNameList track by $index'>
+								<span>{{resource.name}}</span>
+								<span class='delete-button' data-ng-click='projectCtl.deleteTempResourceItem($index, resource)'>x</span>
+							</li>
+						</ul>
+					</div>
+					<div class="error-message">{{projectCtl.newProject.resourceErrorMessage}}</div>
+				</section>
+			</article>
+			<footer>
+				<div>
+					<div class="error-message">{{projectCtl.newProject.addErrorMessage}}</div>
+				</div>
+				<button data-ng-click='projectCtl.addNewProject()'>Add</button>
+				<button data-ng-click='projectCtl.cancelAddNewProject()'>Cancel</button>
+			</footer>
+		</div><div class="vertical-mid-hack"></div>
+	</div>
+	<div class='successfully-added-project-message-box'>
+		<div class="successfully-added-project-message">
+			Successfully added a new Project!
+		</div>
+	</div>
+	<div class='modal-box'>
+		<div class="modal-content">
+		</div>
+	</div>
+
+</div>

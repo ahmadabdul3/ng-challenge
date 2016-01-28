@@ -1,0 +1,90 @@
+
+
+<div>
+	<div class="projects-section">
+		<div class="link">
+			<a href='#/departments'>Departments</a>
+		</div>
+		<div class="projects-title">
+			<h3>{{resourceCtl.entityType}}s</h3>
+			<div class="add">
+				<label data-ng-click='resourceCtl.showNewResourceForm()'>Add +</label>
+			</div>
+		</div>
+		<div class="projects-list">
+			<ul>
+				<li class="project-box" data-ng-repeat='resource in resourceCtl.resources | orderBy:"name":false'>
+					<div class="edit-delete-box">
+						<div class='box' data-ng-click='resourceCtl.deleteResource(resource.id, resource.name)'>
+							<div class='close-box'>
+								<div class='close-icon'>
+									x
+								</div><div class='vertical-mid-hack'></div>
+							</div>
+							<div class='circle'></div>
+						</div>
+					</div>
+					<header>
+						<div class="title-box">
+							<h4>
+								{{resource.name}}
+							</h4>
+						</div>
+					</header>
+					<article>
+						<ul>
+							<li data-ng-repeat='project in resource.projects() | orderBy:"name":false'>
+								<p>
+									Project: {{project.name}}
+								</p>
+							</li>
+						</ul>
+					</article>
+				</li>
+			</ul>
+		</div>
+		<div class="link">
+			<a href='#/deadlines'>Deadlines</a>
+		</div>
+		<div class="link">
+			<a href='#/projects'>Projects</a>
+		</div>
+	</div>
+	<div class="add-project-modal">
+		<div class="add-project-modal-background" data-ng-click='resourceCtl.cancelAddNewResource()'></div>
+		<div class="project-add-box">
+			<header>
+				<div class="title-box">
+					<div>
+						<h3>
+							New {{resourceCtl.entityType}}
+						</h3>
+						<span class='required-asterisk'>*</span>
+						<span class='required-fields-message'><span>*</span> Required fields</span>
+					</div>
+					<input type='text' 
+					data-ng-model='resourceCtl.newResource.name' 
+					data-ng-blur='resourceCtl.validateNewResource(true)'
+					data-ng-trim='false'
+					data-ng-class='resourceCtl.newResource.class'
+					placeholder='{{resourceCtl.entityType}} Name'/>
+				</div>
+				<div class="error-message">
+					{{resourceCtl.newResource.errorMessage}}
+				</div>
+			</header>
+			<footer>
+				<div>
+					<div class="error-message">{{resourceCtl.newResource.addErrorMessage}}</div>
+				</div>
+				<button data-ng-click='resourceCtl.addNewResource()'>Add</button>
+				<button data-ng-click='resourceCtl.cancelAddNewResource()'>Cancel</button>
+			</footer>
+		</div><div class="vertical-mid-hack"></div>
+	</div>
+	<div class='successfully-added-project-message-box'>
+		<div class="successfully-added-project-message">
+			Successfully added a new {{resourceCtl.entityType}}!
+		</div>
+	</div>
+</div>

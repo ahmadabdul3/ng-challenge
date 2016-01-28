@@ -1,0 +1,88 @@
+<div>
+	<div class="projects-section">
+		<div class="projects-title">
+			<h3>{{deptCtl.entityType}}s</h3>
+			<div class="add">
+				<label data-ng-click='deptCtl.showNewDepartmentForm()'>Add +</label>
+			</div>
+		</div>
+		<div class="projects-list">
+			<ul>
+				<li class="project-box" data-ng-repeat='department in deptCtl.departments | orderBy:"name":false'>
+					<div class="edit-delete-box">
+						<div class='box' data-ng-click='deptCtl.deleteDepartment(department.id, department.name)'>
+							<div class='close-box'>
+								<div class='close-icon'>
+									x
+								</div><div class='vertical-mid-hack'></div>
+							</div>
+							<div class='circle'></div>
+						</div>
+					</div>
+					<header>
+						<div class="title-box">
+							<h4>
+								{{department.name}}
+							</h4>
+						</div>
+					</header>
+					<article>
+						<ul>
+							<li data-ng-repeat='project in department.projects() | orderBy:"name":false'>
+								<p>
+									Project: {{project.name}}
+								</p>
+							</li>
+						</ul>
+					</article>
+				</li>
+			</ul>
+		</div>
+		<div class="link">
+			<a href='#/projects'>Projects</a>
+		</div>
+		<div class="link">
+			<a href='#/deadlines'>Deadlines</a>
+		</div>
+		<div class="link">
+			<a href='#/resources'>Resources</a>
+		</div>
+	</div>
+	<div class="add-project-modal">
+		<div class="add-project-modal-background" data-ng-click='deptCtl.cancelAddNewDepartment()'></div>
+		<div class="project-add-box">
+			<header>
+				<div class="title-box">
+					<div>
+						<h3>
+							New {{deptCtl.entityType}}
+						</h3>
+						<span class='required-asterisk'>*</span>
+						<span class='required-fields-message'><span>*</span> Required fields</span>
+					</div>
+					<input type='text' 
+					data-ng-model='deptCtl.newDepartment.name' 
+					data-ng-blur='deptCtl.validateNewDepartment(true)'
+					data-ng-trim='false'
+					data-ng-class='deptCtl.newDepartment.class'
+					placeholder='{{deptCtl.entityType}} Name'/>
+				</div>
+				<div class="error-message">
+					{{deptCtl.newDepartment.errorMessage}}
+				</div>
+			</header>
+			<footer>
+				<div>
+					<div class="error-message">{{deptCtl.newDepartment.addErrorMessage}}</div>
+				</div>
+				<button data-ng-click='deptCtl.addNewDepartment()'>Add</button>
+				<button data-ng-click='deptCtl.cancelAddNewDepartment()'>Cancel</button>
+			</footer>
+		</div><div class="vertical-mid-hack"></div>
+	</div>
+	<div class='successfully-added-project-message-box'>
+		<div class="successfully-added-project-message">
+			Successfully added a new {{deptCtl.entityType}}!
+		</div>
+	</div>
+</div>

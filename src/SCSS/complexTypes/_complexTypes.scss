@@ -1,0 +1,80 @@
+
+
+
+@mixin transition($property, $duration, $function) {
+  -webkit-transition: $property $duration $function;
+     -moz-transition: $property $duration $function;
+       -o-transition: $property $duration $function;
+          transition: $property $duration $function;
+}
+
+.info-summary-box {
+	padding: 5px;
+	margin: 10px;
+	color: $blue;
+	background-color: white;
+	border-radius: 2px;
+	position: relative;
+}
+.info-summary-box-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 310px;
+	height: 0;
+	background-color: black;
+	z-index: 2;
+	@include transition(height, 0.8s, ease);
+}
+.info-summary-box:hover .info-summary-box-bg {
+	height: 260px;
+}
+.info-summary-box-img {
+	@include transition(transform, 0.3s, ease);
+	@include transition(-webkit-transform, 0.3s, ease);
+}
+
+.info-summary-box:hover .info-summary-box-img {
+	transform: scale(1.3);
+	-webkit-transform: scale(1.3);
+     -moz-transform: scale(1.3);
+       -o-transform: scale(1.3);
+}
+
+.info-summary-box:hover {
+	/*transform: rotate(45deg);*/
+	cursor: pointer;
+}
+
+.info-summary-inner-box {
+	text-align: center;
+	margin: auto;
+	width: 300px;
+	height: 250px;
+	overflow: hidden;
+	position: relative;
+	z-index: 5;
+}
+
+.info-summary-inner-box-img-box {
+	text-align: center;
+	height: 205px;
+	overflow: hidden;
+}
+@media (min-width: 0px) and (max-width: 400px) {
+	.info-summary-inner-box {
+		width: 95%;
+	}
+	.info-summary-box {
+		margin: 10px 0;
+	}
+	
+}
+
+
+
+
+
+
+
+

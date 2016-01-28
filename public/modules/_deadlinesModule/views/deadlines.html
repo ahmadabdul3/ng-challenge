@@ -1,0 +1,109 @@
+
+
+<div>
+	<div class="projects-section">
+		<div class="link">
+			<a href='{{deadCtl.mainLink}}'>{{deadCtl.mainLinkName}}</a>
+		</div>
+		<div class="projects-title">
+			<h3>{{deadCtl.entityType}}s</h3>
+			<div class="add">
+				<label data-ng-click='deadCtl.showNewDeadlineForm()'>Add +</label>
+			</div>
+		</div>
+		<div class="projects-list">
+			<ul>
+				<li class="project-box" data-ng-repeat='deadline in deadCtl.deadlines | orderBy:"name":false'>
+					<div class="edit-delete-box">
+						<div class='box' data-ng-click='deadCtl.deleteDeadline(deadline.id, deadline.name)'>
+							<div class='close-box'>
+								<div class='close-icon'>
+									x
+								</div><div class='vertical-mid-hack'></div>
+							</div>
+							<div class='circle'></div>
+						</div>
+					</div>
+					<header>
+						<div class="title-box">
+							<h4>
+								{{deadline.name}}
+							</h4>
+						</div>
+					</header>
+					<article>
+						<ul>
+							<li data-ng-repeat='project in deadline.projects() | orderBy:"name":false'>
+								<p>
+									Project: {{project.name}}</a>
+								</p>
+								<p class="secondary-indent">
+									<div class="secondary-indent {{deadCtl.resourceListClass}}">dept: {{project.department().name}}</div>
+									<div class="secondary-indent {{deadCtl.totalResourcesClass}}">
+										<a class='oj' href="#/project/{{project.id}}">
+											dept: {{project.department().name}}
+										</a>
+									</div>
+								</p>
+								<p class="secondary-indent {{deadCtl.totalResourcesClass}}">
+									<a class='oj' href="#/project/{{project.id}}">
+										Total Resources: {{project.resourceLength(project.id)}}
+									</a>
+								</p>
+								<p class="secondary-indent {{deadCtl.resourceListClass}}" data-ng-repeat='resource in project.resources()'>
+									res: {{resource.name}}
+								</p>
+							</li>
+						</ul>
+					</article>
+				</li>
+			</ul>
+		</div>
+		<div class="link">
+			<a href='#/projects'>Projects</a>
+		</div>
+		<div class="link">
+			<a href='#/departments'>Departments</a>
+		</div>
+		<div class="link">
+			<a href='#/resources'>Resources</a>
+		</div>
+	</div>
+	<div class="add-project-modal">
+		<div class="add-project-modal-background" data-ng-click='deadCtl.cancelAddNewDeadline()'></div>
+		<div class="project-add-box">
+			<header>
+				<div class="title-box">
+					<div>
+						<h3>
+							New {{deadCtl.entityType}}
+						</h3>
+						<span class='required-asterisk'>*</span>
+						<span class='required-fields-message'><span>*</span> Required fields</span>
+					</div>
+					<input type='text' 
+					data-ng-model='deadCtl.newDeadline.name' 
+					data-ng-blur='deadCtl.validateNewDeadline(true)'
+					data-ng-trim='false'
+					data-ng-class='deadCtl.newDeadline.class'
+					placeholder='{{deadCtl.entityType}} Name'/>
+				</div>
+				<div class="error-message">
+					{{deadCtl.newDeadline.errorMessage}}
+				</div>
+			</header>
+			<footer>
+				<div>
+					<div class="error-message">{{deadCtl.newDeadline.addErrorMessage}}</div>
+				</div>
+				<button data-ng-click='deadCtl.addNewDeadline()'>Add</button>
+				<button data-ng-click='deadCtl.cancelAddNewDeadline()'>Cancel</button>
+			</footer>
+		</div><div class="vertical-mid-hack"></div>
+	</div>
+	<div class='successfully-added-project-message-box'>
+		<div class="successfully-added-project-message">
+			Successfully added a new {{deadCtl.entityType}}!
+		</div>
+	</div>
+</div>

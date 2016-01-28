@@ -1,0 +1,17 @@
+{
+  "name": "abdul Boilerplate",
+  "version": "0.0.0",
+  "authors": [
+    "Digital Surgeons"
+  ],
+  "description": "A client side boilerplate for abdul projects",
+  "main": "public_html/index.html",
+  "private": true,
+  "dependencies": {
+    "html5-polyfills": "*",
+    "matchmedia": "~0.2.0",
+    "respond": "~1.4.2",
+    "html5shiv": "~3.7.2",
+    "normalize-scss": "~3.0.1"
+  }
+}

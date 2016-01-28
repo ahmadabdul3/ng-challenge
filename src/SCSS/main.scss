@@ -1,0 +1,109 @@
+
+$red-color: #D93636;
+$orange-color: #F28911;
+$green-color: #14A825;
+$off-blk-txt-color: #292929;
+$dark-gray: #292929;
+
+$lightest-blue: #F5F6F7;
+$lighter-blue: #BACEE6;
+$light-blue: #5E9DE6;
+$blue: #006AE3;
+
+
+$lighter-oj: #F5DCBC;
+$light-oj: #F5B664;
+$oj: #F58B00;
+$dark-oj: #DE7E00;
+$darker-oj: #B56700;
+
+a {
+  color: #00B7FF;
+}
+a.oj {
+	color: $dark-oj;
+}
+a.oj:hover {
+	color: $darker-oj;
+}
+input, select {
+	outline: none;
+	-moz-outline: none;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	background-color: #eee;
+	color: $dark-gray;
+}
+h1 {
+	font-size: 22px;
+}
+h2 {
+	font-size: 20px;
+}
+h3 {
+	font-size: 18px;
+}
+h4 {
+	font-size: 16px;
+}
+.error-message {
+	width: 90%;
+	margin: 0 auto;
+	padding: 1px 0;
+	color: $red-color;
+	font-size: 10px;
+	text-align: center;
+}
+.form {
+	display: inline-block;
+	margin: 10px;
+	text-align: center;
+	box-shadow: 1px 1px 3px 0px #aaa;
+	padding: 20px 30px 0 30px;
+}
+.form div {
+	padding: 1px 0;
+}
+.form label {
+	text-align: left;
+	display: inline-block;
+	min-width: 120px;
+}
+button {
+	margin: 10px 0;
+}
+.hidden {
+	display: none;
+}
+.vertical-mid-hack {
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+	/*width: 1px;
+	background-color: red;*/
+}
+.required-asterisk {
+	color: gray;
+}
+.f-right {
+	float: right;
+}
+.modal-box {
+
+}
+@import 'complexTypes/projectBox';
+@import 'complexTypes/projectAddBox';
+@import 'complexTypes/inputs';
+@import 'complexTypes/close-icon-circle-animation'
+
+
+
+
+
+
+

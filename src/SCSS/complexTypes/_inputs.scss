@@ -1,0 +1,31 @@
+
+
+
+input {
+	border: 1px solid #ccc;
+	padding: 5px;
+	border-radius: 2px;
+	font-size: 14px;
+}
+input:hover {
+	border: 1px solid $lighter-blue;
+	box-shadow: 0 0 5px 1px $lighter-blue;
+}
+input:focus {
+	border-color: $light-blue;
+	box-shadow: 0 0 5px 1px $light-blue;
+}
+
+.input-error {
+	border-color: $red-color;
+	display: inline-block;
+}
+.input-success {
+	border-color: $green-color;
+	transition: border-color 0.2s linear;
+}
+
+
+
+
+

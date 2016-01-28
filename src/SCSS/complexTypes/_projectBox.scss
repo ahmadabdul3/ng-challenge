@@ -1,0 +1,107 @@
+.projects-section {
+	text-align: center;
+	padding: 30px 0;
+
+	.link {
+		text-align: left;
+	}
+}
+.projects-title {
+	width: 300px;
+	margin: 0 auto;
+}
+.projects-title h3 {
+	text-align: left;
+	display: inline-block;
+	width: 49%;
+}
+.projects-title .add {
+	text-align: right;
+	display: inline-block;
+	width: 49%;
+}
+.projects-title .add label {
+	display: inline-block;
+	color: gray;
+}
+.projects-title label:hover {
+	cursor: pointer;
+	color: $green-color;
+}
+.projects-list {
+	width: 300px;
+	margin: 10px auto;
+}
+.projects-list ul {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+.project-box {
+	position: relative;
+	text-align: left;
+	background-color: white;
+	overflow: hidden;
+	border-radius: 3px;
+	box-shadow: 1px 1px 5px -2px;
+	margin: 10px 0;
+	display: inline-block;
+	vertical-align: top;
+	width: 300px;
+	padding: 0;
+	-webkit-transform:translate3d(0,0,0);
+	transition: box-shadow 0.15s linear, transform 0.15s linear;
+}
+.project-box:hover {
+	transform: scale(1.05, 1.05);
+	-webkit-transform: scale(1.05, 1.05);
+	box-shadow: 1px 1px 20px -10px;
+	transition: box-shadow 0.15s linear, transform 0.15s linear;
+}
+.project-box .edit-delete-box {
+	position: absolute;
+	top: 0px;
+	right: -90px;
+	padding: 5px;
+	background-color: white;
+	border-radius: 3px;
+	transition: right 0.15s linear;
+}
+.project-box .edit-delete-box label {
+	color: #ccc;
+}
+.project-box .edit-delete-box .delete:hover {
+	cursor: pointer;
+	color: $red-color;
+}
+.project-box .edit-delete-box .edit:hover {
+	cursor: pointer;
+	color: $oj;
+}
+.project-box:hover .edit-delete-box {
+	right: 0px;
+	transition: right 0.15s linear;
+}
+.project-box header {
+	padding: 10px 0;
+	border-bottom: 1px solid $light-blue;
+}
+.project-box .title-box {
+	width: 90%;
+	margin: 0 auto;
+}
+.project-box header h4 {
+	padding: 0;
+	margin: 0;
+}
+.project-box article {
+	padding: 10px 0;
+}
+.project-box article p {
+	width: 80%;
+	margin: 2px auto;
+}
+.project-box article ul li .secondary-indent {
+  width: 70%;
+  margin: 2px auto;
+}

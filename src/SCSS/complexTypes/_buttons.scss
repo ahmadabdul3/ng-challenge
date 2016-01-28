@@ -1,0 +1,52 @@
+
+
+
+
+.but {
+	padding: 20px 45px;
+	margin: 0 5px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	outline: none;
+}
+.but:hover {
+	cursor: pointer;
+}
+.but-wht-solid-oj {
+	border: none;
+	background-color: white;
+	color: $orange-color;
+	border-radius: 2px;
+	@include transition(background-color, 0.25s, ease-in-out);
+}
+.but-wht-solid-oj:hover {
+	background-color: $orange-color;
+	color: white;
+}
+.but-wht-solid-oj:active {
+	color: black;
+	background-color: $orange-color;
+}
+
+.but-wht-solid-blue {
+	border: none;
+	background-color: white;
+	color: $blue;
+	border-radius: 2px;
+	@include transition(background-color, 0.25s, ease-in-out);
+}
+.but-wht-solid-blue:hover {
+	background-color: $blue;
+	color: white;
+}
+.but-wht-solid-blue:active {
+	color: black;
+	background-color: $blue;
+}
+
+
+@media (min-width: 0px) and (max-width: 700px) {
+	.but {
+		padding: 15px 35px;
+	}
+}

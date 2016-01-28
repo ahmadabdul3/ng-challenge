@@ -1,0 +1,60 @@
+<div>
+	<div class="projects-section">
+		<div class="link">
+			<a href='#/deadlines/resources'>Deadline Resources</a>
+		</div>
+		<div class="projects-title">
+			<h3 style="text-align: left;display: block;">{{projectCtl.entityType}}</h3>
+		</div>
+		<div class="projects-list">
+				<div class='{{projectCtl.noDataClass}}' style="padding: 20px 0; margin: 5px 0; text-align: center; background-color: white; border-radius: 3px;">
+					No Data...
+				</div>
+				<div class="project-box" data-ng-repeat='project in projectCtl.project'>
+					<div class="edit-delete-box">
+						<div class='box' data-ng-click='projectCtl.deleteProject(project.id, project.name)'>
+							<div class='close-box'>
+								<div class='close-icon'>
+									x
+								</div><div class='vertical-mid-hack'></div>
+							</div>
+							<div class='circle'></div>
+						</div>
+					</div>
+					<header>
+						<div class="title-box">
+							<h4>
+								{{project.name}}
+							</h4>
+						</div>
+					</header>
+					<article>
+						<p>
+							Due: {{project.refs.deadline.name}}
+						</p>
+						<p>
+							Dept: {{project.refs.department.name}}
+						</p>
+						<ul>
+							<li data-ng-repeat='resource in project.refs.resources | orderBy:"name":false'>
+								<p>
+									Resource: {{resource.name}}
+								</p>
+							</li>
+						</ul>
+					</article>
+				</div>
+		</div>
+		<div class="link">
+			<a href='#/deadlines'>Deadlines</a>
+		</div>
+		<div class="link">
+			<a href='#/projects'>Projects</a>
+		</div>
+		<div class="link">
+			<a href='#/departments'>Departments</a>
+		</div>
+	</div>
+
+
+</div>

@@ -1,0 +1,39 @@
+
+
+.skill-lvl-box {
+	margin: 5px 10px;
+}
+.skl-lvl-icon {
+	padding: 5px;
+	border-radius: 5px;
+}
+.skl-lvl-beg {
+	background-color: $lighter-oj;
+}
+.skl-lvl-intr {
+	background-color: $light-oj;
+}
+.skl-lvl-adv {
+	background-color: $oj;
+}
+.skl-lvl-txt-box {
+	font-size: 20px;
+	/*width: 175px;*/
+	width: 16.65%;
+	min-width: 170px;
+	height: 175px;
+	/*padding: 30px 50px;*/
+	margin: 0;
+	/*border-radius: 3px;*/
+	color: white;
+}
+@media all and (min-width: 1200px) {
+	.skl-lvl-txt-box {
+		width: 16.65%;
+	}
+}
+@media all and (max-width: 410px) {
+	.skl-lvl-txt-box {
+		width: 50%;
+	}
+}
